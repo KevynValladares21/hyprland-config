@@ -68,8 +68,34 @@ button:hover {
     color: @text; /* $text*/
 }
 
+/* Left Side */
+
+#custom-power {
+  font-size: 18px;
+  margin-left: 8px;
+  padding: 0 5px;
+}
+
+#custom-power:hover {
+    color: @blue;
+}
+
+#custom-launcher {
+    padding: 0 10px;
+    margin: 0;
+    background-color: @surface0;      /* matches your clock, tray, etc. */
+    color: @blue;                      /* Catppuccin Blue (89b4fa) for a soft accent */
+    border-radius: 0;                  /* fits your flat style */
+    font-size: 23px;
+}
+
+#custom-launcher:hover {
+    background-color: @surface1;       /* slightly brighter hover */
+    color: @text;                      /* bright readable hover fg */
+}
+
 #workspaces button {
-    padding: 0px 10px;
+    padding: 0px 7px;
     background-color: transparent;
     color: #bac2de; /* $subtext1 */
 }
