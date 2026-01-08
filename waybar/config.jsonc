@@ -7,14 +7,15 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
+        "custom/power",
         "hyprland/workspaces"
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
-        //"clock",
         "tray",
+        "idle_inhibitor",
         "pulseaudio",
         "backlight",
         "battery"
@@ -36,6 +37,11 @@
     //         "default": ""
     //     }
     // },
+    "custom/launcher": {
+        "format": "",  // or  for Endeavour
+        "tooltip": false,
+        "on-click": "fuzzel"
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -90,24 +96,33 @@
         "interval": 60
     },
     "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", ""]
+        "format": "{icon}",
+        "format-alt": "{icon} {percent}%",
+        "format-icons": ["", "", "", ""]
     },
     "battery": {
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        /*"format": "{icon} {capacity}%",
         "format-charging": "󰂄 {capacity}%",
         "format-plugged": "󰂄{capacity}%",
         "format-alt": "{icon} {time}",
         "format-full": "󱈑 {capacity}%",
-        "format-icons": [
-            "󱊡",
-            "󱊢",
-            "󱊣"
-        ]
+        */
+        "format": "{icon}",
+        "format-alt": "{icon} {capacity}%",
+
+        "format-icons": {
+            "charging": "󰂄",
+            //"plugged": "󰚥",
+            "default": [
+                "󱊡",
+                "󱊢",
+                "󱊣"
+            ]
+        },
       },
     "battery#bat2": {
         "bat": "BAT2"
@@ -115,15 +130,13 @@
     "pulseaudio": {
         "scroll-step": 5,
         "max-volume": 150,
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
-        "format-icons": [
-            "",
-            "",
-            " "
-        ],
+        //"format": "{icon} {volume}%",
+        //"format-bluetooth": "{icon} {volume}%",
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-icons": ["", "", "", ""],
         "nospacing": 1,
-        "format-muted": " ",
+        "format-muted": "",
         "on-click": "pavucontrol",
         "tooltip": false
     },
@@ -140,15 +153,8 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
-    }
+        "format" : "⏻",
+        "tooltip": false,
+        "on-click": "powermenu",
+    },
 }
